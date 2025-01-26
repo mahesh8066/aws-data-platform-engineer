@@ -1,0 +1,22 @@
+name: CI Pipeline
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build_and_test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Build Docker image
+        run: |
+          docker build -t python-s3-upload .
+
+      - name: Run Docker container to test Python script
+        run: |
+          docker run python-s3-upload python python_script.py <file_name_to_upload>
