@@ -19,4 +19,4 @@ jobs:
 
       - name: Run Docker container to test Python script
         run: |
-          docker run python-s3-upload python python_script.py <file_name_to_upload>
+          docker run python-s3-upload python python_script.py ambda.zip
